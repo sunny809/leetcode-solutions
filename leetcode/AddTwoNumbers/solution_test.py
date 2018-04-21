@@ -33,6 +33,10 @@ class SolutionTest(unittest.TestCase):
             print(result_list_node.val)
             result_list_node = result_list_node.next
 
+    def test_num_to_list(self):
+        so = Solution()
+        result = so.get_list_from_number(123)
+        print(result)
 
 
 
@@ -43,7 +47,7 @@ class SolutionTest(unittest.TestCase):
         # 465
         solution = Solution()
         result = solution.addTwoNumbers(ln1,ln2)
-        # 342 + 564 = 807
+        # 342 + 465 = 807
         self.assertEqual(807,result)
 
     def test_1(self):
@@ -57,15 +61,28 @@ class SolutionTest(unittest.TestCase):
         self.assertEqual(864,result)
 
     def test_2(self):
-        l1 = [7,0,0]
-        # 321
-        l2 = [8,0,0]
-        # 543
+        ln1 = self.genListNode([7,0,0])
+        # 7
+        ln2 = self.genListNode([8,0,0])
+        # 8
         solution = Solution()
-        result = solution.addTwoNumbers(self.genListNode(l1),self.genListNode(l2))
-        # 321 + 543 = 864
+        result = solution.addTwoNumbers(ln1,ln2)
+        # 7 + 8 = 15
         self.assertEqual(15,result)
 
+
+    def test_3(self):
+        ln1 = self.genListNode([2,4,3])
+        # 342
+        ln2 = self.genListNode([5,6,4])
+        # 465
+        std = self.genListNode([7,0,8])
+        solution = Solution()
+
+        result = solution.addTwoNumbers(ln1,ln2)
+        #
+        print(result)
+        self.assertEqual(std,result)
     # def test_1(self):
     #     self.data = [15,11,7,2]
     #     solution = Solution()
