@@ -5,6 +5,8 @@ class Solution:
         :rtype: str
         """
         for outter_index in range(0, len(s)):
+            for inner_index in range(0, len(s)):
+                print(outter_index + ":" + inner_index)
 
     def isPalindrome(self, input):
         length = len(input)
