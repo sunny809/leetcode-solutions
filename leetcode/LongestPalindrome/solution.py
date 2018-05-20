@@ -4,7 +4,14 @@ class Solution:
         :type s: str
         :rtype: str
         """
-        for outter_index in range(0, len(s)):
+        result_str = ""
+        for startIndex in range(0, len(s)):
+            for innerIndex in range(startIndex + 1, len(s) + 1):
+                current_str = s[startIndex:innerIndex]
+                if self.isPalindrome(current_str):
+                    if len(current_str) > len(result_str):
+                        result_str = current_str
+        return result_str
 
     def isPalindrome(self, input):
         length = len(input)
