@@ -1,4 +1,5 @@
 import unittest;
+
 from leetcode.LongestPalindrome.solution import Solution
 
 
@@ -15,6 +16,9 @@ class SolutionTest(unittest.TestCase):
         result = so.longestPalindrome(input)
         self.assertEqual("bab", result )
 
+    def test_the_basic(self):
+        input = "abcba"
 
-
-    
+        so = Solution()
+        result = so.isPalindrome(input)
+        self.assertEqual(True, result)
