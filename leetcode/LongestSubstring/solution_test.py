@@ -55,5 +55,3 @@ class SolutionTest(unittest.TestCase):
         so = Solution()
         length = so.lengthOfLongestSubstring(input)
         self.assertEquals(7, length)
-
-    
