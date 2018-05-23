@@ -1,70 +1,38 @@
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+
 class Solution:
-    palindrome_set = set()
 
     def longestPalindrome(self, s):
         """
         :type s: str
         :rtype: str
         """
+
+        current_length = len(s)
+        new_lenght = current_length * 2;
+
+        str_array = self.prepare_str_array(s)
+
         result = ""
-        for left in range(0, len(s)):
-            for right in range(len(s), -1, -1):
-                current_str = s[left:right]
-                if len(current_str) <= len(result) or left >= right:
-                    break;
 
-                if self.isPalindromeNew(current_str):
-                    result = current_str
+        id = 0
+        mx = 0
 
-        return result
+        for i in range(0, new_lenght):
 
-    def isPalindrome(self, input):
-        if input in self.palindrome_set:
-            return True
-        length = len(input)
-        start_char = input[0:1]
-        end_char = input[length - 1:length]
-        if start_char == end_char:
-            if length <= 3:
-                self.palindrome_set.add(input)
-                return True
-            else:
-                status = self.isPalindrome(input[1:length - 1])
-                if status:
-                    self.palindrome_set.add(input)
-                    return True
-                else:
-                    return False
-        else:
-            return False
 
-    def isPalindromeNew(self, input):
+    def prepare_str_array(self, s):
+        current_length = len(s)
+        new_lenght = current_length * 2;
+        new_s = []
+        # new_s.append("$")
+        new_s.append("#")
+        for index in range(0, current_length):
+            new_s.append(s[index:index + 1])
+            new_s.append("#")
 
-        if input in self.palindrome_set:
-            return True
-        fullLenght = len(input)
-
-        is_odd = fullLenght % 2 == 1
-
-        left = right = 0
-
-        if (is_odd):
-            left = int(fullLenght / 2) - 1
-            right = int(fullLenght / 2) + 1
-        else:
-            # even
-            left = int(fullLenght / 2)
-            right = int(fullLenght / 2) + 1
-
-        while left > 0 and right < fullLenght:
-            leftChar = input[left: left+1]
-            rightChar = input[right: right + 1]
-            if leftChar == rightChar:
-                self.palindrome_set.add(input[left:right])
-            elif left != 0 and right != len(fullLenght):
-                return False
-            else:
-                return True
-
-            left-=1
-            right+=1
+        return new_s

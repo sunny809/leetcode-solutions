@@ -81,13 +81,17 @@ class SolutionTest(unittest.TestCase):
         print(result)
 
 
-    # def test_is_pan(self):
-    #     so = Solution()
-    #     result = so.isPalindrome("abc")
-    #     self.assertEquals(False, result)
-    #     result = so.isPalindrome("aba")
-    #     self.assertEquals(True, result)
-    #     result = so.isPalindrome("aaaa")
-    #     self.assertEquals(True, result)
-    #     result = so.isPalindrome("cabbab")
-    #     self.assertEquals(False, result)
+    def test_is_pan(self):
+        so = Solution()
+        result = so.isPalindrome("abc")
+        self.assertEquals(False, result)
+        result = so.isPalindrome("aba")
+        self.assertEquals(True, result)
+        result = so.isPalindrome("aaaa")
+        self.assertEquals(True, result)
+        result = so.isPalindrome("cabbab")
+        self.assertEquals(False, result)
+
+    def test_base(self):
+        so = Solution()
+        so.longestPalindrome("aba")

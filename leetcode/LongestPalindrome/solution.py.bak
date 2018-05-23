@@ -1,0 +1,55 @@
+class Solution:
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        result_str = ""
+        for startIndex in range(0, len(s)):
+            for innerIndex in range(startIndex + 1, len(s) + 1):
+                current_str = s[startIndex:innerIndex]
+                if self.isPalindrome(current_str):
+                    if len(current_str) > len(result_str):
+                        result_str = current_str
+        return result_str
+
+    def isPalindrome(self, input):
+        length = len(input)
+
+        is_odd = self.isOddNumber(length)
+
+        if is_odd:
+            # odd process
+            if length == 1:
+                return input
+            else:
+                head_char = input[0:1]
+                tail_char = input[length - 1:length]
+                if head_char != tail_char:
+                    return ""
+                else:
+                    return head_char + self.isPalindrome(input[1:length - 1]) + tail_char
+        else:
+            # even process
+            if length == 2:
+                head_char = input[0:1]
+                tail_char = input[1:2]
+                if head_char == tail_char:
+                    return input
+                else:
+                    return ""
+            else:
+                head_char = input[0:1]
+                tail_char = input[length - 1:length]
+                if head_char != tail_char:
+                    return ""
+                else:
+                    return head_char + self.isPalindrome(input[1:length - 1]) + tail_char
+
+        return True
+
+    def isOddNumber(self, length):
+        if length % 2 == 1:
+            return True
+        else:
+            return False
