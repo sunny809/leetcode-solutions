@@ -7,9 +7,9 @@ from leetcode.QuickSort.QuickSort import QuickSort
 class QuickSortTest(unittest.TestCase):
 
     def test(self):
-        testInput = ArrayUtil.getRandomArray(10, 100)
+        testInput = ArrayUtil.getRandomArray(100, 100)
         print(testInput)
         qs = QuickSort()
-        result = qs.sort(testInput)
+        result = qs.slove(testInput)
         print(result)
 
